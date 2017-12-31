@@ -8,15 +8,16 @@
 .Arrow {
   position: absolute;
   opacity: 0.4;
+  transition: all 0.1s;
 }
 .Arrow__line {
   display: block;
   position: absolute;
-  top: -1px;
+  top: -2px;
   transform-origin: top left;
 
   width: 100px;
-  height: 2px;
+  height: 4px; /* This border is to make it easier to highlight */
 
   background: #222233;
 }
@@ -24,11 +25,10 @@
 .Arrow__head {
   display: block;
   position: absolute;
-  top: -3px;
+  top: -4px;
 
-  width: 30px;
-  height: 6px;
+  width: 20px;
+  height: 8px;
 
   background: #222233;
 }
-

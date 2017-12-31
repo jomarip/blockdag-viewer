@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './DagDisplayBlock.css';
 import Arrow from './Arrow';
 
-class DagDisplay__Block extends Component {
+class DagDisplayBlock extends Component {
   render() {
     let block = this.props.block;
     let layout = this.props.layout;
@@ -14,7 +14,7 @@ class DagDisplay__Block extends Component {
 
     return (
       <div className="DagDisplay__Block">
-        <div className="Block__body" style={bodyStyle}>
+        <div className="DagDisplay__Block__body" style={bodyStyle}>
           <span>{this.props.block.id}</span>
         </div>
       </div>
@@ -22,4 +22,4 @@ class DagDisplay__Block extends Component {
   }
 }
 
-export default DagDisplay__Block;
+export default DagDisplayBlock;
