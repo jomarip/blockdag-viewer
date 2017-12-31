@@ -12,6 +12,7 @@
   justify-content: center;
   background: #eee;
   border: 1px solid rgba(0,0,0,0.7);
+  transition: all 0.2s;
 
   cursor: default;
   opacity: 0.95;

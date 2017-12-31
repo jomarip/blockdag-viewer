@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './DagDisplayBlock.css';
-import Arrow from './Arrow';
 
 class DagDisplayBlock extends Component {
   render() {
-    let block = this.props.block;
     let layout = this.props.layout;
 
     let bodyStyle = {

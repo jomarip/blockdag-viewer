@@ -51,7 +51,15 @@ function addBlock(dag, opts) {
 // It returns an object similar to the dag object, except with layout parameters.
 // This is kinda inefficient but can be optimized to O(E) if layout is placed inside blocks
 // By default, the scale is 100px
-function layout(dag, scaleX = 100, scaleY = 100) {
+function layout(dag, inputOpts) {
+  let opts = { // Defaults
+    scaleX: 100,
+    scaleY: 100,
+    noisy: false,
+  };
+
+  Object.assign(opts, inputOpts);
+
   let depthMap = {};
   let layoutBlocks = [];
   let maxHeight = 0;
@@ -80,24 +88,65 @@ function layout(dag, scaleX = 100, scaleY = 100) {
       maxDepth = depthMap[height];
     }
 
+    let x = height * opts.scaleX;
+    let y = (depthMap[height] - 1) * opts.scaleY;
+
+    if (opts.noisy) {
+      x += (block.id % 5) * 8;
+      y += -((-block.id) % 5) * 8;
+    }
+
     layoutBlocks.push({
       id: block.id,
       height: height,
-      x: height * scaleX,
-      y: (depthMap[height] - 1) * scaleY,
+      x: x,
+      y: y,
       links: currentLinks,
     });
+
   }
 
   return {
-    sizeX: (maxHeight) * scaleX,
-    sizeY: (maxDepth - 1) * scaleY,
+    sizeX: (maxHeight) * opts.scaleX,
+    sizeY: (maxDepth - 1) * opts.scaleY,
     blocks: layoutBlocks,
   }
+}
+
+function demoMine(dag) {
+  let blocks = dag.blocks;
+
+  let numLinks = 0;
+  numLinks += Math.round(Math.random()*2);
+  numLinks += Math.round(Math.random()*2);
+
+  if (numLinks > blocks.length) {
+    numLinks = blocks.length - 1;
+  }
+  if (numLinks < 1) {
+    numLinks = 1;
+  }
+
+  let minLink = blocks.length > 15 ? blocks.length - 15 : 0;
+
+  let links = [];
+
+  while (links.length < numLinks) {
+    let dest = Math.floor(Math.random() * (blocks.length - minLink)) + minLink;
+    if (dest < minLink || links.indexOf(dest) > -1) {
+      continue;
+    }
+    links.push(dest);
+  }
+
+  addBlock(dag, {
+    links: links,
+  });
 }
 
 module.exports = {
   create,
   addBlock,
   layout,
+  demoMine,
 };

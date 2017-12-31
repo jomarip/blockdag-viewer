@@ -10,7 +10,9 @@ class DagDisplay extends Component {
   render() {
     let bodyItems = [];
     let dag = this.props.dag;
-    let dagLayout = Daglib.layout(dag);
+    let dagLayout = Daglib.layout(dag, {
+      noisy: this.props.noisy,
+    });
 
     // NOTE: There is a reason why arrows sit on the same level as blocks. This is so that z-indexes can be
     // properly set.
@@ -43,8 +45,8 @@ class DagDisplay extends Component {
           <Arrow key={block.id + '.' + block.links[linkIndex]} {...arrowProps} />
         )
       }
-      bodyItems.push(<DagDisplayBlock key={id} block={dag.blocks[id]} layout={dagLayout.blocks[id]} />);
-      bodyItems.push(<div className="DagDisplay__arrowGroup">{arrows}</div>);
+      bodyItems.push(<DagDisplayBlock key={id + 'b'} block={dag.blocks[id]} layout={dagLayout.blocks[id]} />);
+      bodyItems.push(<div key={id + 'a'} className="DagDisplay__arrowGroup">{arrows}</div>);
 
     }
 

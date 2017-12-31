@@ -8,7 +8,7 @@
 .Arrow {
   position: absolute;
   opacity: 0.4;
-  transition: all 0.1s;
+  transition: all 0.2s;
 }
 .Arrow__line {
   display: block;
