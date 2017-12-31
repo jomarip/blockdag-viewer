@@ -19,6 +19,9 @@
 .DagDisplay__Block:hover + .DagDisplay__arrowGroup {
   z-index: 10;
 }
+.DagDisplay__Block:hover + .DagDisplay__arrowGroup .Arrow {
+  opacity: 1;
+}
 
 .DagDisplay__Block:hover + .DagDisplay__arrowGroup .Arrow__line,
 .DagDisplay__Block:hover + .DagDisplay__arrowGroup .Arrow__head {
