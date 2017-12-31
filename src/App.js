@@ -10,14 +10,20 @@ class App extends Component {
     this.state = {
       generating: false,
       noisy: true,
+      fast: true,
     };
 
     this.toggleGenerator = this.toggleGenerator.bind(this);
     this.toggleNoisy = this.toggleNoisy.bind(this);
+    this.toggleFast = this.toggleFast.bind(this);
     this.tickGenerator = this.tickGenerator.bind(this);
 
-    setInterval(() => {this.tickGenerator()}, 100);
-
+    let loop = () => {
+      this.tickGenerator();
+      let interval = this.state.fast ? 50 : 500;
+      setTimeout(() => {loop()}, interval);
+    };
+    loop();
   }
   tickGenerator() {
     if (!this.state.generating) {
@@ -25,18 +31,27 @@ class App extends Component {
     }
 
     Daglib.demoMine(this.dag);
-    Daglib.demoMine(this.dag);
 
-    this.setState({});
+    if (this.dag.blocks.length == 1500) {
+      this.setState({generating: false});
+    } else {
+      this.setState({});
+    }
   }
   toggleGenerator() {
     this.setState({
       generating: !this.state.generating,
     });
+    this.tickGenerator();
   }
   toggleNoisy() {
     this.setState({
       noisy: !this.state.noisy,
+    });
+  }
+  toggleFast() {
+    this.setState({
+      fast: !this.state.fast,
     });
   }
   render() {
@@ -56,6 +71,9 @@ class App extends Component {
           </button>
           <button onClick={this.toggleNoisy}>
             {this.state.noisy ? 'Disable noisy positioning' : 'Enable noisy positioning'}
+          </button>
+          <button onClick={this.toggleFast}>
+            {this.state.fast ? 'Switch to slow mining' : 'Switch to fast mining'}
           </button>
         </header>
         <DagDisplay dag={this.dag} noisy={this.state.noisy}></DagDisplay>

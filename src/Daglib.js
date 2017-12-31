@@ -92,8 +92,8 @@ function layout(dag, inputOpts) {
     let y = (depthMap[height] - 1) * opts.scaleY;
 
     if (opts.noisy) {
-      x += (block.id % 5) * 8;
-      y += -((-block.id) % 5) * 8;
+      x += ((block.id + 2) % 5) * 6;
+      y += -((-block.id + 2) % 5) * 6;
     }
 
     layoutBlocks.push({
@@ -127,7 +127,7 @@ function demoMine(dag) {
     numLinks = 1;
   }
 
-  let minLink = blocks.length > 15 ? blocks.length - 15 : 0;
+  let minLink = blocks.length > 10 ? blocks.length - 10 : 0;
 
   let links = [];
 
