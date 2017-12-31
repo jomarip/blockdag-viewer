@@ -9,7 +9,7 @@ class Block extends Component {
 
     for (let i in block.links) {
       links.push(
-        <Arrow key={i} x1={100} y1={100} x2={300} y2={300} />
+        <Arrow key={i} fromX={200} fromY={100} toX={50} toY={50} />
       )
     }
 

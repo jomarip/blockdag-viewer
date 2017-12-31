@@ -9,36 +9,4 @@
   background: #eee;
 
   opacity: 0.5;
-
-  transform: rotate(-20deg);
-
-  transform: scale(2, 1);
-}
-
-/*
-  Block links are css arrows.
-  To make maths easy, 0 degrees represents the arrow pointing to the right. ---->
-
-  Once drawn, they can just be manipulated with transforms.
-*/
-.Block__link {
-
-}
-.Block__link__line {
-  display: block;
-  position: relative;
-
-  width: 100px;
-  height: 10px;
-
-  background: red;
-}
-
-.Block__link__head {
-  position: relative;
-
-  width: 10px;
-  height: 10px;
-
-  background: green;
 }

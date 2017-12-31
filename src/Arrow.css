@@ -7,12 +7,12 @@
 */
 .Arrow {
   position: absolute;
-  transform: translate(10px);
 }
 .Arrow__line {
   display: block;
   position: absolute;
-  top: -2px;
+  top: -1px;
+  transform-origin: top left;
 
   width: 109px;
   height: 2px;
@@ -23,11 +23,10 @@
 .Arrow__head {
   display: block;
   position: absolute;
-  top: -4px;
-  // right: -100px;
+  top: -2px;
 
-  width: 15px;
-  height: 6px;
+  width: 20px;
+  height: 4px;
 
   background: red;
 }
