@@ -23,7 +23,7 @@ class DagDisplay extends Component {
       for (let linkIndex in block.links) {
         let linkLayout = layout.links[linkIndex];
 
-        console.log('Link ' + block.id + '->' + linkIndex + `: (${layout.x},${layout.y})->(${linkLayout.toX},${linkLayout.toY})`)
+        // console.log('Link ' + block.id + '->' + linkIndex + `: (${layout.x},${layout.y})->(${linkLayout.toX},${linkLayout.toY})`)
 
         // It's possible to spread the fromY a bit, but sometimes, lines cross. In order to do it properly,
         // you would have to sort the toY values so that you can properly spread the fromY.

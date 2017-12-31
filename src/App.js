@@ -5,80 +5,76 @@ import DagDisplay from './DagDisplay';
 import Daglib from './Daglib';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.dag = Daglib.create();
+    this.state = {
+      generating: false,
+      intervalId: 0,
+    };
+
+    this.toggleGenerator = this.toggleGenerator.bind(this);
+    this.tickGenerator = this.tickGenerator.bind(this);
+
+    setInterval(() => {this.tickGenerator()}, 100);
+
+  }
+  tickGenerator() {
+    if (!this.state.generating) {
+      return;
+    }
+    let blocks = this.dag.blocks;
+
+    let numLinks = 0;
+    numLinks += Math.round(Math.random()*2);
+    numLinks += Math.round(Math.random()*2);
+
+    if (numLinks > blocks.length) {
+      numLinks = blocks.length - 1;
+    }
+    if (numLinks < 1) {
+      numLinks = 1;
+    }
+
+    let minLink = blocks.length > 15 ? blocks.length - 15 : 0;
+    let maxLink = blocks.length - 1;
+
+    let links = [];
+
+    while (links.length < numLinks) {
+      let dest = Math.floor(Math.random() * (blocks.length - minLink)) + minLink;
+      if (dest < minLink || links.indexOf(dest) > -1) {
+        continue;
+      }
+      links.push(dest);
+    }
+
+    Daglib.addBlock(this.dag, {
+      links: links,
+    });
+
+    this.setState({});
+  }
+  toggleGenerator() {
+    this.setState({
+      generating: !this.state.generating,
+    });
+    this.tickGenerator();
+  }
   render() {
-    let dag = Daglib.create();
-
-    Daglib.addBlock(dag, {
-      links: [0],
-    });
-
-    Daglib.addBlock(dag, {
-      links: [0, 1],
-    });
-
-    Daglib.addBlock(dag, {
-      links: [0, 1],
-    });
-
-    Daglib.addBlock(dag, {
-      links: [0, 1, 2],
-    });
-
-    Daglib.addBlock(dag, {
-      links: [0, 1, 2],
-    });
-
-    Daglib.addBlock(dag, {
-      links: [1, 2],
-    });
-
-    Daglib.addBlock(dag, {
-      links: [1,2,3,4],
-    });
-
-    Daglib.addBlock(dag, {
-      links: [4,5,6],
-    });
-    Daglib.addBlock(dag, {
-      links: [4,5,6],
-    });
-
-    Daglib.addBlock(dag, {
-      links: [4,5,6,8],
-    });
-    Daglib.addBlock(dag, {
-      links: [4,5,6,8],
-    });
-
-    Daglib.addBlock(dag, {
-      links: [6,8, 10],
-    });
-
-    Daglib.addBlock(dag, {
-      links: [6,8, 10, 11],
-    });
-
-    Daglib.addBlock(dag, {
-      links: [6,8, 10, 12],
-    });
-
-    Daglib.addBlock(dag, {
-      links: [6,13, 14],
-    });
-
-    Daglib.addBlock(dag, {
-      links: [15],
-    });
+    console.log(this.state)
 
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Hi! :D </h1>
         </header>
         <div className="App-intro">
         </div>
-        <DagDisplay dag={dag}></DagDisplay>
+        <button onClick={this.toggleGenerator}>
+          {this.state.generating ? 'Pause mining' : 'Start mining'}
+        </button>
+        <DagDisplay dag={this.dag}></DagDisplay>
       </div>
     );
   }
