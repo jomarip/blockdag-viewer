@@ -16,15 +16,19 @@
   position: relative;
   z-index: 5;
 }
-.DagDisplay__Block:hover + .DagDisplay__arrowGroup {
+.DagDisplay__Block:hover + .DagDisplay__arrowGroup,
+.DagDisplay__arrowGroup:hover  {
   z-index: 10;
 }
-.DagDisplay__Block:hover + .DagDisplay__arrowGroup .Arrow {
+.DagDisplay__Block:hover + .DagDisplay__arrowGroup .Arrow,
+.DagDisplay__arrowGroup:hover .Arrow {
   opacity: 1;
 }
 
 .DagDisplay__Block:hover + .DagDisplay__arrowGroup .Arrow__line,
-.DagDisplay__Block:hover + .DagDisplay__arrowGroup .Arrow__head {
+.DagDisplay__Block:hover + .DagDisplay__arrowGroup .Arrow__head,
+.DagDisplay__arrowGroup:hover .Arrow__line,
+.DagDisplay__arrowGroup:hover .Arrow__head {
   background: rgb(0,128,255);
   box-shadow: 0 0 1px 1px rgba(0,128,255, 0.3);
 
