@@ -88,9 +88,10 @@ function layout(dag, scaleX = 100, scaleY = 100) {
       links: currentLinks,
     });
   }
-  console.log(layoutBlocks)
 
   return {
+    sizeX: (maxHeight) * scaleX,
+    sizeY: (maxDepth - 1) * scaleY,
     blocks: layoutBlocks,
   }
 }

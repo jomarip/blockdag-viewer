@@ -1,11 +1,11 @@
 .DagDisplay {
-  outline: 1px solid green;
-  height: 400px;
-  padding: 25px;
+  padding: 0px;
+  overflow-y: scroll;
 }
 .DagDisplay__body {
   position: relative;
-  outline: 1px solid orange;
+  padding: 50px;
+  box-sizing: content-box;
 }
 
 .DagDisplay__Block {

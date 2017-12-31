@@ -48,9 +48,14 @@ class DagDisplay extends Component {
 
     }
 
+    let bodyStyles = {
+      width: dagLayout.sizeX + 'px',
+      height: dagLayout.sizeY + 'px',
+    };
+
     return (
       <div className="DagDisplay">
-        <div className="DagDisplay__body">
+        <div className="DagDisplay__body" style={bodyStyles}>
           {bodyItems}
         </div>
       </div>

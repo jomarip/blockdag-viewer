@@ -33,10 +33,42 @@ class App extends Component {
     });
 
     Daglib.addBlock(dag, {
-      links: [1, 2,3,4,5],
+      links: [1,2,3,4],
     });
 
+    Daglib.addBlock(dag, {
+      links: [4,5,6],
+    });
+    Daglib.addBlock(dag, {
+      links: [4,5,6],
+    });
 
+    Daglib.addBlock(dag, {
+      links: [4,5,6,8],
+    });
+    Daglib.addBlock(dag, {
+      links: [4,5,6,8],
+    });
+
+    Daglib.addBlock(dag, {
+      links: [6,8, 10],
+    });
+
+    Daglib.addBlock(dag, {
+      links: [6,8, 10, 11],
+    });
+
+    Daglib.addBlock(dag, {
+      links: [6,8, 10, 12],
+    });
+
+    Daglib.addBlock(dag, {
+      links: [6,13, 14],
+    });
+
+    Daglib.addBlock(dag, {
+      links: [15],
+    });
 
     return (
       <div className="App">
@@ -45,8 +77,8 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <div className="App-intro">
-          <DagDisplay dag={dag}></DagDisplay>
         </div>
+        <DagDisplay dag={dag}></DagDisplay>
       </div>
     );
   }
