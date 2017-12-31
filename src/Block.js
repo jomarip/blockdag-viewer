@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Block.css';
+import Arrow from './Arrow';
 
 class Block extends Component {
   render() {
@@ -7,11 +8,8 @@ class Block extends Component {
     let links = [];
 
     for (let i in block.links) {
-      console.log(block.links)
       links.push(
-        <div key={i} className="Block__link">
-          {block.id} -> {block.links[i]}
-        </div>
+        <Arrow key={i} x1={100} y1={100} x2={300} y2={300} />
       )
     }
 
