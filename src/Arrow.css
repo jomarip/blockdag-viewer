@@ -7,7 +7,6 @@
 */
 .Arrow {
   position: absolute;
-  // z-index: 5;
 }
 .Arrow__line {
   display: block;
@@ -19,7 +18,6 @@
   height: 2px;
 
   background: #222233;
-  z-index: 4;
 }
 
 .Arrow__head {
@@ -31,18 +29,5 @@
   height: 4px;
 
   background: #222233;
-  z-index: 4;
 }
 
-.Block:hover {
-  background: blue;
-  z-index: 15;
-}
-.Block__body:hover ~ .Block__arrows {
-  z-index: 12;
-}
-.Block__body:hover ~ .Block__arrows .Arrow__line,
-.Block__body:hover ~ .Block__arrows .Arrow__head {
-  background: rgb(0,128,255);
-   box-shadow: 0 0 1px 0px rgba(0,128,255, 0.8);
-}

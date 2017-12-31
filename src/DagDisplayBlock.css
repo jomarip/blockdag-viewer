@@ -3,11 +3,11 @@
 }
 .Block__body {
   position: absolute;
-  transform: translate(-25px, -25px); /* BLOCK_HALF_SIZE This translate is to move the 0,0 origin to the center of the block. */
+  transform: translate(-20px, -20px); /* BLOCK_HALF_SIZE This translate is to move the 0,0 origin to the center of the block. */
 
   display: flex;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 3px;
 
   align-items: center;
@@ -15,12 +15,10 @@
   background: #eee;
 
   opacity: 0.9;
-  z-index: 10;
 }
 
 .Block__body span {
   font-size: 24px;
-  opacity: 0.6;
 }
 .Block__arrows {
   opacity: 1;

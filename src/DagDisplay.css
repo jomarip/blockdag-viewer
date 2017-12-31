@@ -7,3 +7,22 @@
   position: relative;
   outline: 1px solid orange;
 }
+
+.DagDisplay__Block {
+  position: relative;
+  z-index: 15;
+}
+.DagDisplay__arrowGroup {
+  position: relative;
+  z-index: 5;
+}
+.DagDisplay__Block:hover + .DagDisplay__arrowGroup {
+  z-index: 10;
+}
+
+.DagDisplay__Block:hover + .DagDisplay__arrowGroup .Arrow__line,
+.DagDisplay__Block:hover + .DagDisplay__arrowGroup .Arrow__head {
+  background: rgb(0,128,255);
+  box-shadow: 0 0 1px 1px rgba(0,128,255, 0.3);
+
+}
