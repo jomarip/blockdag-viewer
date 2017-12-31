@@ -16,7 +16,9 @@ class DagDisplay extends Component {
 
     return (
       <div className="DagDisplay">
-        {blocks}
+        <div className="DagDisplay__body">
+          {blocks}
+        </div>
       </div>
     );
   }

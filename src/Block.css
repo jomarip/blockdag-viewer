@@ -1,7 +1,9 @@
 .Block__body {
+
+}
+.Block__body {
   position: absolute;
-  top: -25px;
-  left: -25px;
+  transform: translate(-25px, -25px); /* BLOCK_HALF_SIZE This translate is to move the 0,0 origin to the center of the block. */
 
   display: flex;
   width: 50px;
@@ -21,7 +23,7 @@
   opacity: 0.6;
 }
 .Block__arrows {
-  opacity: 0.5;
+  opacity: 1;
 }
 
 .Block__body:hover ~ .Block__arrows {

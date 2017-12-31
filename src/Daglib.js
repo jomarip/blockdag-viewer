@@ -50,9 +50,12 @@ function addBlock(dag, opts) {
 // Lays out the dag in a nice and deterministic way
 // It returns an object similar to the dag object, except with layout parameters.
 // This is kinda inefficient but can be optimized to O(E) if layout is placed inside blocks
-function layout(dag) {
-  let heightMap = {};
+// By default, the scale is 100px
+function layout(dag, scaleX = 100, scaleY = 100) {
+  let depthMap = {};
   let layoutBlocks = [];
+  let maxHeight = 0;
+  let maxDepth = 0;
 
   for (let blockIndex in dag.blocks) {
     let block = dag.blocks[blockIndex];
@@ -69,13 +72,19 @@ function layout(dag) {
       });
     }
 
-    heightMap[height] = heightMap[height] ? heightMap[height] + 1 : 1;
+    depthMap[height] = depthMap[height] ? depthMap[height] + 1 : 1;
+    if (height > maxHeight) {
+      maxHeight = height;
+    }
+    if (depthMap[height] > maxDepth) {
+      maxDepth = depthMap[height];
+    }
 
     layoutBlocks.push({
       id: block.id,
       height: height,
-      x: height * 100,
-      y: (heightMap[height] - 1) * 100,
+      x: height * scaleX,
+      y: (depthMap[height] - 1) * scaleY,
       links: currentLinks,
     });
   }

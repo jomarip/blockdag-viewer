@@ -1,5 +1,9 @@
 .DagDisplay {
-  position: relative;
-  border: 1px solid green;
+  outline: 1px solid green;
   height: 400px;
+  padding: 25px;
+}
+.DagDisplay__body {
+  position: relative;
+  outline: 1px solid orange;
 }
