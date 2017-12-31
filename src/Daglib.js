@@ -47,7 +47,47 @@ function addBlock(dag, opts) {
   return dag;
 }
 
+// Lays out the dag in a nice and deterministic way
+// It returns an object similar to the dag object, except with layout parameters.
+// This is kinda inefficient but can be optimized to O(E) if layout is placed inside blocks
+function layout(dag) {
+  let heightMap = {};
+  let layoutBlocks = [];
+
+  for (let blockIndex in dag.blocks) {
+    let block = dag.blocks[blockIndex];
+    let height = 0;
+    let currentLinks = [];
+    for (let linkIndex in block.links) {
+      let link = block.links[linkIndex];
+      if (layoutBlocks[link].height >= height) {
+        height = layoutBlocks[link].height + 1;
+      }
+      currentLinks.push({
+        toX: layoutBlocks[link].x,
+        toY: layoutBlocks[link].y,
+      });
+    }
+
+    heightMap[height] = heightMap[height] ? heightMap[height] + 1 : 1;
+
+    layoutBlocks.push({
+      id: block.id,
+      height: height,
+      x: height * 100,
+      y: (heightMap[height] - 1) * 100,
+      links: currentLinks,
+    });
+  }
+  console.log(layoutBlocks)
+
+  return {
+    blocks: layoutBlocks,
+  }
+}
+
 module.exports = {
   create,
   addBlock,
+  layout,
 };

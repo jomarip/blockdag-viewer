@@ -7,6 +7,7 @@
 */
 .Arrow {
   position: absolute;
+  z-index: 5;
 }
 .Arrow__line {
   display: block;
@@ -14,10 +15,10 @@
   top: -1px;
   transform-origin: top left;
 
-  width: 109px;
+  width: 100px;
   height: 2px;
 
-  background: red;
+  background: #222233;
 }
 
 .Arrow__head {
@@ -28,5 +29,5 @@
   width: 20px;
   height: 4px;
 
-  background: red;
+  background: #222233;
 }
